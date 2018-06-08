@@ -1,4 +1,4 @@
-List the gogole videos based on search term alsong with video title and description
+List the youtube videos based on search term along with video title and description
 
 #### to start?
 - You need youtube API KEY to fetch youtube videos.
