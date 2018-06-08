@@ -1,7 +1,8 @@
 import React, {Component} from 'react'; // React helps to creat React components
 import ReactDOM from 'react-dom'; // ReactDOM is helpful in rendering the component into DOM
-import YTSearch from 'youtube-api-search';
+import YTSearch from 'youtube-api-search'; // module to fetch youtube videos
 import _ from 'lodash';
+
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
@@ -12,12 +13,12 @@ const API_KEY = 'YOUTUBE-API-KEY'
 class App extends Component {
   constructor(props) {
     super(props);
-
+    // Set the default state properties
     this.state = {'videos': [],
                   selectedVideo:null
                  };
-
-    this.videoSearch('surfboard');
+    // By default search for 'meditation'
+    this.videoSearch('meditation');
   }
 
   videoSearch(term) {
