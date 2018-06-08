@@ -1,18 +1,20 @@
 import React from 'react';
 
 const VideoDetail = ({video}) => {
+  // We will show the 'Loading..' message to avoid the errors in case the videos
+  // are not loaded
   if (!video) {
     return (
       <div>Loading..</div>
     );
   }
-  console.log(video);
+
   const videoID = video.id.videoId;
   const url = `https://youtube.com/embed/${videoID}`;
   return (
     <div className="video-detail col-md-8">
       <div className="embed-responsive embed-responsive-16by9">
-        <iframe className="embed-responsive-item" src={url} ></iframe>
+        <iframe className="embed-responsive-item" src={url}></iframe>
       </div>
       <div className="details">
         <div>{video.snippet.title}</div>

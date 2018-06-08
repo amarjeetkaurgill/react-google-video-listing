@@ -1,9 +1,13 @@
 import React from 'react';
 
-// multiple props can be pulled by {prop1, prop2}
+// Multiple props can be pulled by {prop1, prop2}
+//In ES6, `const video = props.video` can be written as {video};
+// Similarly `const onVideoSelect = props.onVideoSelect`
 const VideoListItem = ({video, onVideoSelect}) => {
   const imageURL = video.snippet.thumbnails.default.url;
-  //{video} is sane as const video = props.video;
+
+  // once video is clicked, onVideoSelect callback will fetch the video and will
+  // pass it to the parent component
   return (
       <li className="list-group-item"
       onClick={() => onVideoSelect(video)}>

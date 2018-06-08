@@ -21,6 +21,12 @@ class App extends Component {
     this.videoSearch('meditation');
   }
 
+  /**
+   * This method will help us fetching youtube videos based on provided search
+   * term.
+   *
+   * @param term {string} The search term
+   */
   videoSearch(term) {
     YTSearch({key: API_KEY, term: term}, (videos) => {
       this.setState({videos});
@@ -28,11 +34,23 @@ class App extends Component {
     });
   }
 
- // Since we need to pass videos into this component, so we need to pass these as
- //In this method we will be passing the method as callback to child components as 'prop'
- // and will retrieve the selected video and update the state
+
   render() {
+    // While typing the search term we don't want to call the function on each change event,
+    // so debounce will help us calling this function after 300 ms.
+
+    // This videoSearch method will be passed as a callback to Searchbar component.
+    // which will help us in searching new videos based on entered search term.
     const videoSearch = _.debounce((term) => {this.videoSearch(term)}, 300);
+
+    /**
+     * We want to open a video from the list, once clicked. So to achieve this behaviour,
+     * we are passing `onVideoSelect` method as callback to child components where
+     * it can be accessed using 'prop'.
+     * From VideoList component, this method will be again passed to VideoListItem as 'prop',
+     * where it will be accessed using method callback and will retrieve
+     * the selected video back here and the state will be updated to `selectedVideo`
+     */
     return (
       <div>
         <SearchBar onSearchTermChange={videoSearch}/>
